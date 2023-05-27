@@ -68,11 +68,11 @@ public:
 
 class PrimeIterator {
 private:
-    const MagicalContainer& container;
+    MagicalContainer& container;
     vector<int> primeElements;
 
 public:
-    PrimeIterator(const MagicalContainer& container);
+    PrimeIterator( MagicalContainer& container);
 
     bool isPrime(int number) const;
 
@@ -89,9 +89,9 @@ public:
 
     };
 
-    Iterator begin() const;
+    Iterator begin() ;
 
-    Iterator end() const;
+    Iterator end() ;
 };
 
 #endif  // MAGICAL_CONTAINER_HPP

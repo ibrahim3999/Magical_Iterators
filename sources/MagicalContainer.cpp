@@ -91,5 +91,51 @@ bool SideCrossIterator::Iterator::operator==(const Iterator& other) const {
 bool SideCrossIterator::Iterator::operator!=(const Iterator& other) const {
     return iter != other.iter;
 }
+PrimeIterator::PrimeIterator( MagicalContainer& container) : container(container) {
+    const std::vector<int>& elements = container.getElements();
+    for (int num : elements) {
+        if (isPrime(num)) {
+            primeElements.push_back(num);
+        }
+    }
+}
 
+bool PrimeIterator::isPrime(int number) const {
+    if (number < 2) {
+        return false;
+    }
+    for (int i = 2; i * i <= number; ++i) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+PrimeIterator::Iterator PrimeIterator::begin()  {
+    return Iterator(primeElements.begin());
+}
+
+PrimeIterator::Iterator PrimeIterator::end()  {
+    return Iterator(primeElements.end());
+}
+
+// PrimeIterator::Iterator implementation
+
+int PrimeIterator::Iterator::operator*() {
+    return *iter;
+}
+
+PrimeIterator::Iterator& PrimeIterator::Iterator::operator++() {
+    ++iter;
+    return *this;
+}
+
+bool PrimeIterator::Iterator::operator==(const Iterator& other) const {
+    return iter == other.iter;
+}
+
+bool PrimeIterator::Iterator::operator!=(const Iterator& other) const {
+    return iter != other.iter;
+}
 
