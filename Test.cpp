@@ -16,6 +16,10 @@ TEST_CASE("Testing MagicalContainer") {
         container.removeElement(20);
         
         CHECK(container.size() == 2);
+
+        container.removeElement(10);
+
+        CHECK(container.size() == 1);
     }
     
     SUBCASE("Adding and removing elements - edge case") {

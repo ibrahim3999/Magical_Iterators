@@ -1,5 +1,6 @@
 #include <iostream>
 #include "sources/MagicalContainer.hpp"
+
 int main() {
     // Create a MagicalContainer and add some elements
     MagicalContainer container;
@@ -11,10 +12,10 @@ int main() {
 
     // Print container size
     std::cout << "Size of container: " << container.size() << std::endl;
-/*
-    // Use AscendingIterator to display elements in ascending order
+
+   // Use AscendingIterator to display elements in ascending order
     std::cout << "Elements in ascending order:\n";
-    AscendingIterator ascIter(container);
+    /*AscendingIterator ascIter(container);
     for (auto it = ascIter.begin(); it != ascIter.end(); ++it) {
         std::cout << *it << ' ';   // 2 3 9 17 25
     }
@@ -39,6 +40,6 @@ int main() {
     // Remove an element from the container and display the size
     container.removeElement(9);
     std::cout << "Size of container after removing an element: " << container.size() << std::endl;
-*/
+*/ 
     return 0;
 }
