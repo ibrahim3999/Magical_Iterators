@@ -15,12 +15,12 @@ int main() {
 
    // Use AscendingIterator to display elements in ascending order
     std::cout << "Elements in ascending order:\n";
-    /*AscendingIterator ascIter(container);
+    AscendingIterator ascIter(container);
     for (auto it = ascIter.begin(); it != ascIter.end(); ++it) {
         std::cout << *it << ' ';   // 2 3 9 17 25
     }
     std::cout << std::endl;
-
+/*
     // Use DescendingIterator to display elements in descending order
     std::cout << "Elements in cross order:\n";
     SideCrossIterator crossIter(container);

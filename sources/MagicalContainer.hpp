@@ -17,17 +17,28 @@ public:
 
 class AscendingIterator {
 private:
-    const MagicalContainer& container;
+    MagicalContainer& container;
     vector<int> sortedElements;
 
 public:
-    AscendingIterator(const MagicalContainer& container);
+    AscendingIterator(MagicalContainer& container);
 
-    class Iterator;
+    class Iterator{
+        private:
+            vector<int>::iterator iter;
 
-    Iterator begin() const;
+        public:
+            Iterator(vector<int>::iterator iter):iter(iter){}
+            int operator*();
+            Iterator& operator++();
+            bool operator==(const Iterator& other)const;
+            bool operator!=(const Iterator& other)const;
 
-    Iterator end() const;
+    };
+
+    Iterator begin() ;
+
+    Iterator end() ;
 };
 
 class SideCrossIterator {
