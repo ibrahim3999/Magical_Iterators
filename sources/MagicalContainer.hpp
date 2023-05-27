@@ -47,13 +47,23 @@ private:
     vector<int> crossOrderElements;
 
 public:
-    SideCrossIterator(const MagicalContainer& container);
+    SideCrossIterator( MagicalContainer& container);
 
-    class Iterator;
+    class Iterator{
+         private:
+            vector<int>::iterator iter;
 
-    Iterator begin() const;
+        public:
+            Iterator(vector<int>::iterator iter):iter(iter){}
+            int operator*();
+            Iterator& operator++();
+            bool operator==(const Iterator& other)const;
+            bool operator!=(const Iterator& other)const;
 
-    Iterator end() const;
+    };
+    Iterator begin() ;
+
+    Iterator end() ;
 };
 
 class PrimeIterator {
@@ -66,7 +76,18 @@ public:
 
     bool isPrime(int number) const;
 
-    class Iterator;
+    class Iterator{
+         private:
+            vector<int>::iterator iter;
+
+        public:
+            Iterator(vector<int>::iterator iter):iter(iter){}
+            int operator*();
+            Iterator& operator++();
+            bool operator==(const Iterator& other)const;
+            bool operator!=(const Iterator& other)const;
+
+    };
 
     Iterator begin() const;
 

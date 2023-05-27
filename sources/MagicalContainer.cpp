@@ -50,4 +50,46 @@ bool AscendingIterator::Iterator::operator==(const Iterator& other) const {
 bool AscendingIterator::Iterator::operator!=(const Iterator& other) const {
     return iter != other.iter;
 }
+//--------------------- SideCrossIterator ------------------------------------
+
+SideCrossIterator::SideCrossIterator(MagicalContainer& container) : container(container) {
+    crossOrderElements = container.getElements();
+    std::sort(crossOrderElements.begin(), crossOrderElements.end(), [](int a, int b) {
+        if (a % 2 == 0 && b % 2 == 0) {
+            return a < b;
+        } else if (a % 2 != 0 && b % 2 != 0) {
+            return a > b;
+        } else {
+            return a % 2 == 0;
+        }
+    });
+}
+
+SideCrossIterator::Iterator SideCrossIterator::begin()  {
+    return Iterator(crossOrderElements.begin());
+}
+
+SideCrossIterator::Iterator SideCrossIterator::end()  {
+    return Iterator(crossOrderElements.end());
+}
+
+// SideCrossIterator::Iterator implementation
+
+int SideCrossIterator::Iterator::operator*() {
+    return *iter;
+}
+
+SideCrossIterator::Iterator& SideCrossIterator::Iterator::operator++() {
+    ++iter;
+    return *this;
+}
+
+bool SideCrossIterator::Iterator::operator==(const Iterator& other) const {
+    return iter == other.iter;
+}
+
+bool SideCrossIterator::Iterator::operator!=(const Iterator& other) const {
+    return iter != other.iter;
+}
+
 
