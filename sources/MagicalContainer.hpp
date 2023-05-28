@@ -71,9 +71,9 @@ namespace ariel {
 
                 public:
                     PrimeIterator(MagicalContainer& container);
-
+                    void sortPrimes();
                     bool isPrime(int number) const;
-
+                    
                     class Iterator {
                         private:
                             vector<int>::iterator iter;

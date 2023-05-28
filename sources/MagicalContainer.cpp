@@ -54,15 +54,18 @@ namespace ariel{
 
     MagicalContainer::SideCrossIterator::SideCrossIterator(MagicalContainer& container) : container(container) {
         crossOrderElements = container.getElements();
-        std::sort(crossOrderElements.begin(), crossOrderElements.end(), [](int a, int b) {
-            if (a % 2 == 0 && b % 2 == 0) {
-                return a < b;
-            } else if (a % 2 != 0 && b % 2 != 0) {
-                return a > b;
-            } else {
-                return a % 2 == 0;
-            }
-        });
+      std::sort(crossOrderElements.begin(), crossOrderElements.end(), [](int a, int b) {
+        if (a % 2 == 0 && b % 2 == 0) {
+            return a < b;  // Sort even numbers in ascending order
+        } else if (a % 2 != 0 && b % 2 != 0) {
+            return a > b;  // Sort odd numbers in descending order
+        } else if (a % 2 == 0 && b % 2 != 0) {
+            return true;   // Even numbers come before odd numbers
+        } else {
+            return false;  // Odd numbers come after even numbers
+        }
+    });
+
     }
 
     MagicalContainer::SideCrossIterator::Iterator MagicalContainer::SideCrossIterator::begin()  {
@@ -112,7 +115,13 @@ namespace ariel{
         return true;
     }
 
+    void MagicalContainer::PrimeIterator::sortPrimes() {
+        std::sort(primeElements.begin(), primeElements.end());
+    }
+
+
     MagicalContainer::PrimeIterator::Iterator MagicalContainer::PrimeIterator::begin()  {
+        MagicalContainer::PrimeIterator::sortPrimes();
         return Iterator(primeElements.begin());
     }
 
